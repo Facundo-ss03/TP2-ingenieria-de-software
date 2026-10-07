@@ -1,0 +1,109 @@
+body {
+  background-color: rgb(2, 116, 145);
+  margin: 0;
+  padding: 0;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  
+  
+
+}
+
+
+
+#div1 {
+  border-radius: 25px;
+  background-color:rgb(132, 140, 148);
+  padding: 40px; 
+  width: 100%;
+  border-radius: 25px;
+  max-width: 500px;
+  
+  
+  
+  
+}
+.formulario{
+  display:flex;
+  flex-direction: colum;
+  
+  justify-content: space-around;
+  align-items: flex-start;
+  gap:15px;
+  flex:400px;
+}
+
+.button {
+  background-color: #7962df;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.card-registro {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border: radius 12px;
+  
+  padding: 25px;
+  margin-top: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0,0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card-registro h2 {
+  color: rgb(176, 76, 243);
+  
+  margin-top: 0;
+  border-bottom:2px solid #a5d6a7;
+  padding-bottom: 10px;
+}
+
+.datos-grid{
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px 20px;
+  margin-top:20px;
+
+}
+
+.item-dato {
+  font-size: 14px;
+  color:#555;
+}
+
+.item-dato strong {
+  color:#333;
+  display:block;
+  margin-bottom:2px;
+}
+
+ #resultadoDelRegistro {
+  flex:1;
+  max-width: 500px;
+  display:flex;
+
+  word-wrap:break-word;
+  word-break: break-all;
+}

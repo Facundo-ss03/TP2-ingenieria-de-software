@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="registro.css">
+</head>
+ <link rel="stylesheet"href="registro.css">
+<body>
+<div id="div1"><div class="formulario">
+  <div class="principal">
+    <h2> FORMULARIO DE REGISTRO</h2>
+    <h3> DATOS PERSONALES</h3>
+    <form>
+      <label for="nombre">Nómbre:</label><br>
+      <input type="text" id="nombre" name="nombre" value="" placeholder="Tu nombre..."><br>
+      <label for="apellido">Apellido:</label><br>
+      <input type="text" id="apellido" name="apellido" value="" placeholder="Tu apellido..."><br>
+      <label for="dni">DNI:</label><br>
+      <input type="text" id="dni" name="dni" value="" placeholder="Tu dni..."><br>
+      <label for="fecha-nacimiento">Fecha de nacimiento:</label><br>
+      <input type="text" id="fecha-nacimiento" name="fecha-nacimiento" value="" placeholder="Tu fecha de nacimiento..."><br>
+      <label for="direccion">Dirección actual:</label><br>
+      <input type="text" id="direccion" name="direccion" value="" placeholder="Tu dirección..."><br>
+      <label for="distrito">Distrito electoral:</label><br>
+      <input type="text" id="distrito" name="distrito" value="" placeholder="Tu distrito..."><br>
+      <label for="telefono">Teléfono:</label><br>
+      <input type="text" id="telefono" name="telefono" value="" placeholder="Tu teléfono..."><br>
+      <label for="correo">correo electronico:</label><br>
+      <input type="text" id="correo" name="correo" value="" placeholder="Tu correo electronico.." >
+
+      <h3>¿Fue autoridad de mesa previamente?</h3>
+      <input type="checkbox" id="autoridad">
+
+      <h3>¿Completó la capacitación para ser autoridad de mesa?</h3>
+      <input type="checkbox" id="capacitado">
+      
+      <h3>¿Está afiliado a alguna agrupación?</h3>
+      <input type="checkbox" id="afiliado">
+      <br>
+      <br>
+      <label for="">Si la respuesta es "si", indique a qué partido pertenece:</label>
+      <input type="text" id="partido" name="" value="" placeholder="Partido..."><br>
+
+      <h3>¿Tiene interés en participar en alguna charla?</h3>
+      <input type="checkbox" id="interesado">
+
+      <br>
+      <br>
+
+      <button type="button" class="button" id="botonAceptar">Aceptar</button>
+    </form>
+
+</div></div></div>
+<div id="mensaje-exito"></div>
+<div id="contenido-detalle"></div>
+
+<script>
+
+  const botonAceptar= document.getElementById('botonAceptar');
+  
+  if(botonAceptar){
+    botonAceptar.addEventListener('click',function(){
+      
+          const nombre = document.getElementById('nombre').value;
+          const apellido = document.getElementById('apellido').value;
+          const dni = document.getElementById('dni').value;
+          const fecha = document.getElementById('fecha-nacimiento').value;
+          const direccion = document.getElementById('direccion').value;
+          const distrito = document.getElementById('distrito').value;
+          const telefono = document.getElementById('telefono').value;
+          const correo = document.getElementById('correo').value;
+          const contenido = document.getElementById('contenido-detalle');
+
+          const autoridad = document.getElementById('autoridad').checked ? "Si" : "No";
+          const capacitado = document.getElementById('capacitado').checked ? "Si" : "No";
+          const afiliado = document.getElementById('afiliado').checked ? "Si" : "No";
+          const interesado = document.getElementById('interesado').checked ? "Si" : "No";
+
+          const partido = document.getElementById('partido').value;
+
+      if(!document.getElementById('autoridad').checked) console.log("checked");
+
+          if(!nombre || !apellido || !dni || !fecha || !direccion 
+          || !distrito || !telefono || !correo ||
+          !document.getElementById('capacitado').checked){
+            alert("Por favor, complete todos los campos.");
+            return;
+          }
+
+          if(document.getElementById('afiliado').checked && document.getElementById('partido').value == ""){
+            alert("por favor, ingrese el partido del que forma parte.");
+            return;
+          }
+
+          const mensajeDeExito=document.getElementById('mensaje-exito');
+          mensajeDeExito.innerHTML=`
+          <div style="background-color:#d4edda;color:#155724;border:1px solid #c3e6cb;padding:15px;border-radius:8px;max-width:400px;margin:20px auto;text-align:center;font-family:sans-serif;box-shadow:0px 2px 5px rgba(0,0,0,0.1);">
+            <p style="margin:0 0 10px 0; font-weight: bold;font-size:16px;">¡El formulario se envió con éxito!!</p>
+            <button type="button" id="botonMostrarDetalle" style="background-color:#28a745; color:white;border:none;padding:8px 15px;border-radius:5px;cursor:pointer;font-weight:bold;">Mostrar detalle: </button>
+            </div>
+            `;
+
+          document.getElementById('contenido-detalle').innerHTML="";
+
+          document.getElementById('botonMostrarDetalle').addEventListener('click',function(){
+            const contenido=document.getElementById('contenido-detalle');
+
+             contenido.innerHTML = `
+              <div class="detalle-charla open" style="background: white; border-radius:15px; padding:20px; box-shadow: 0px 4px 10px rgba(0,0,0,0.15); max-width:400px; margin:20px auto;">
+                <div class="detalle-header">
+                    <img src="https://media.istockphoto.com/id/1496531561/es/vector/mano-introduciendo-el-voto-en-una-urna-ilustraci%C3%B3n-vectorial-de-dibujos-animados.jpg?s=612x612&w=0&k=20&c=faI-19lgi9jde-MEdYovkEbMEC0nKADrxiVkyh07RYA=" style="width:100%; border-radius:15px; margin-bottom:15px;">
+                    <h2 style="margin:0; color:#283655;">${nombre} ${apellido}</h2>
+                </div>
+                <div class="detalle-body" style="margin-top:20px; text-align:left;">
+                  
+                    <p><strong>DNI:</strong>${dni} </p>
+                    <p><strong>Fecha de nacimiento:</strong>${fecha}</p>
+                    <p><strong>Dirección actual:</strong>${direccion}</p>
+                    <p><strong>Distrito electoral:</strong> ${distrito}</p>
+                    <p><strong>Teléfono:</strong> ${telefono}</p>
+                    
+                    <p><strong>¿Fue autoridad?:</strong> ${autoridad}</p>
+                    <p><strong>¿Completó la capacitación?:</strong> ${capacitado}</p>
+                    <p><strong>¿Completó la capacitación?:</strong> ${afiliado}</p>
+                    <p><strong>Partido:</strong> ${partido}</p>
+                    <p><strong>¿Tiene interés en participar en charlas?:</strong> ${interesado}</p>
+                    
+                </div>
+              </div>
+            `;
+            mensajeDeExito.innerHTML="";
+
+
+
+
+          });
+
+          
+    });
+  }
+</script>
+
+</body>
+</html>
