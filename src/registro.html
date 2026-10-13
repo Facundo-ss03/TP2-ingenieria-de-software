@@ -34,11 +34,11 @@
       <input type="checkbox" id="capacitado">
       
       <h3>¿Está afiliado a alguna agrupación?</h3>
-      <input type="checkbox" id="afiliado">
+      <input type="checkbox" id="afiliado" onclick="habilitarInput()">
       <br>
       <br>
       <label for="">Si la respuesta es "si", indique a qué partido pertenece:</label>
-      <input type="text" id="partido" name="" value="" placeholder="Partido..."><br>
+      <input type="text" id="partido" name="" value="" disabled placeholder="Partido..."><br>
 
       <h3>¿Tiene interés en participar en alguna charla?</h3>
       <input type="checkbox" id="interesado">
@@ -112,17 +112,17 @@
                 </div>
                 <div class="detalle-body" style="margin-top:20px; text-align:left;">
                   
-                    <p><strong>DNI:</strong>${dni} </p>
-                    <p><strong>Fecha de nacimiento:</strong>${fecha}</p>
-                    <p><strong>Dirección actual:</strong>${direccion}</p>
-                    <p><strong>Distrito electoral:</strong> ${distrito}</p>
-                    <p><strong>Teléfono:</strong> ${telefono}</p>
+                    <p><strong>DNI: </strong>${dni} </p>
+                    <p><strong>Fecha de nacimiento: </strong> ${fecha}</p>
+                    <p><strong>Dirección actual: </strong> ${direccion}</p>
+                    <p><strong>Distrito electoral: </strong> ${distrito}</p>
+                    <p><strong>Teléfono: </strong> ${telefono}</p>
                     
-                    <p><strong>¿Fue autoridad?:</strong> ${autoridad}</p>
-                    <p><strong>¿Completó la capacitación?:</strong> ${capacitado}</p>
-                    <p><strong>¿Está afiliado a alguna agrupación?:</strong> ${afiliado}</p>
-                    <p><strong>Partido:</strong> ${partido}</p>
-                    <p><strong>¿Tiene interés en participar en charlas?:</strong> ${interesado}</p>
+                    <p><strong>¿Fue autoridad?: </strong> ${autoridad}</p>
+                    <p><strong>¿Completó la capacitación?: </strong> ${capacitado}</p>
+                    <p><strong>¿Está afiliado a alguna agrupación?: </strong> ${afiliado}</p>
+                    <p><strong>Partido: </strong> ${partido}</p>
+                    <p><strong>¿Tiene interés en participar en charlas?: </strong> ${interesado}</p>
                     
                 </div>
               </div>
@@ -137,6 +137,22 @@
           
     });
   }
+</script>
+
+<script>
+  
+  function habilitarInput(){
+
+    if(document.getElementById('afiliado').checked){
+      document.getElementById('partido').disabled = false;
+    } 
+    else {
+     document.getElementById('partido').disabled = true;
+    }
+    
+  
+  }
+
 </script>
 
 </body>
